@@ -20,6 +20,12 @@
   --text-color: hsl(0 0% 46%);
   --text-color-light: hsl(0 0% 98%);
   --body-background: hsl(0 0% 98%);
+  /* --- */
+  --divider: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
 }
 
 button,
@@ -37,16 +43,6 @@ a {
   text-decoration: none;
 }
 
-/* ================= INHERIT | BASE ================= */
-.container {
-  width: 100%;
-  margin: 0 1.5rem;
-}
-
-.section-container {
-  padding: 5rem 0;
-}
-
 body {
   font: 400 1rem "DM Sans", sans-serif;
   background: var(--body-background);
@@ -60,19 +56,67 @@ h1 {
   -webkit-font-smoothing: auto;
 }
 
+/* ================= INHERIT | BASE ================= */
+.container {
+  margin: 0 1.5rem;
+}
+
+.section-container {
+  padding: 5rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.button {
+  background-color: var(--base-color);
+  color: var(--title-color-light);
+  display: inline-flex;
+  align-items: center;
+  height: 3.5rem;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  font: 500 1rem "DM Sans", sans-serif;
+
+  transition: background 0.3s;
+}
+.button:hover {
+  background: var(--base-color-alt);
+}
+
+.divider-1 {
+  height: 1px;
+  background: var(--divider);
+}
+
 /* ================= HEADER CONTAINER ================= */
 header#header-container {
   border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem;
+  display: flex;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--body-background);
 }
 
+/* ================= NAVIGATION CONTAINER ================= */
 header#header-container > nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   height: var(--header-height);
+  width: 100%;
 }
 
+/* ================= LOGO CONTAINER ================= */
 .logo {
   font: 700 1.31rem "Poppins", sans-serif;
   color: var(--title-color);
@@ -82,8 +126,56 @@ header#header-container > nav {
   color: var(--base-color);
 }
 
+/* ================= LAYOUT ================= */
+main {
+  margin-top: calc(var(--header-height) + 2rem);
+}
+
 /* ================= HOME CONTAINER ================= */
+
+#home {
+  overflow: hidden;
+}
 #home .container {
   margin: 0;
+}
+
+#home .image {
+  position: relative;
+}
+
+#home .image::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  top: -16.8%;
+  left: 16.8%;
+  z-index: 0;
+}
+
+#home .image img {
+  position: relative;
+  right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before {
+  border-radius: 0.25rem;
+}
+
+#home .text {
+  margin: 0 1.5rem;
+  text-align: center;
+}
+
+#home .text h1 {
+  margin-bottom: 1rem;
+}
+
+#home .text p {
+  margin-bottom: 2rem;
+  max-width: 100%;
 }
 /* ================= FOOTER CONTAINER ================= */
